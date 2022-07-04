@@ -4,28 +4,27 @@ import com.tom.jmazegen.maze.Cell;
 import com.tom.jmazegen.maze.Grid;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
-public class BinaryTreeMazeBuilder extends MazeBuilder {
-    private final ArrayList<Cell> neighbours = new ArrayList<>();
-    private final Random rand = new Random();
+public final class BinaryTreeMazeBuilder {
+    static Grid grid;
+    private static final ArrayList<Cell> neighbours = new ArrayList<>();
+    private static final Random rand = new Random();
 
-    public BinaryTreeMazeBuilder() {
-        this.grid = new Grid(20, 20);
-    }
-
-    public BinaryTreeMazeBuilder(Grid grid) {
-        this.grid = grid;
-    }
+    /**
+     * Don't let anyone instantiate this class.
+     */
+    private BinaryTreeMazeBuilder() {}
 
     /**
      * Helper function that randomly chooses a neighbour of the cell.
      * @param cell the cell, which neighbours are chosen from
      * @return the selected neighbour or null (if no bottom or right neighbour is available).
      */
-    private Cell chooseNeighbourOf(Cell cell) {
+    private static Cell chooseNeighbourOf(Cell cell) {
         if (cell.bottom != null) {
-            neighbours.add(cell.bottom);
+            neighbours.addAll(Arrays.asList(cell.bottom));
         }
         if (cell.right != null) {
             neighbours.add(cell.right);
@@ -40,8 +39,8 @@ public class BinaryTreeMazeBuilder extends MazeBuilder {
         }
     }
 
-    @Override
-    public void buildMaze() {
+    public static void buildMaze(Grid grid_) {
+        grid = grid_;
         for (ArrayList<Cell> row : grid.getCells()) {
             for (Cell cell : row) {
                 Cell neighbour = chooseNeighbourOf(cell);

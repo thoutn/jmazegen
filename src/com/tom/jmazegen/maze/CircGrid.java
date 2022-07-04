@@ -21,7 +21,7 @@ public class CircGrid extends Grid {
      * The matrix size is computed during construction, such to obtain a cell <em>width</em>
      * similar in dimension to its <em>height</em>.
      */
-    private void prepareGrid() {
+    protected void prepareGrid() {
         cells.add(new ArrayList<>(width));
         cells.get(0).add(new CircCell(0, 0));
         size_ = 1;
@@ -45,7 +45,7 @@ public class CircGrid extends Grid {
      * Modified version of the same method of class Cell.
      * It enables to connect multiple bottom cells to each top cell.
      */
-    private void configureCells() {
+    protected void configureCells() {
         for (ArrayList<Cell> row : cells) {
             for (Cell cell : row) {
                 int row_ = cell.row;
@@ -72,12 +72,6 @@ public class CircGrid extends Grid {
             }
         }
     }
-
-//    public Cell getRandomCell() {
-//        int row_ = rand.nextInt(0, height);
-//        int col_ = rand.nextInt(0, cells.get(row_).size());
-//        return cells.get(row_).get(col_);
-//    }
 
     @Override
     public int getSize() {

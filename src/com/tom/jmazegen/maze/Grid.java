@@ -27,13 +27,13 @@ public class Grid {
         this.cells = new ArrayList<>(height);
 
         prepareGrid();
-        configureGrid();
+        configureCells();
     }
 
     /**
      * Creates a matrix for storing the individual cells. The matrix created is of size <em>width</em>×<em>height</em>.
      */
-    private void prepareGrid() {
+    protected void prepareGrid() {
         for (int row_ = 0; row_ < height; row_++) {
             cells.add(new ArrayList<>(width));
             for (int col_ = 0; col_ < width; col_++) {
@@ -49,7 +49,7 @@ public class Grid {
      *      <li>defines the maze boundaries</li>
      *  </ul>
      */
-    private void configureGrid() {
+    protected void configureCells() {
         for (ArrayList<Cell> row : cells) {
             for (Cell cell : row) {
                 int row_ = cell.row;

@@ -10,45 +10,65 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Objects;
 
-public class MazePresenter {
-    Grid grid;
-    private final int cellSize;
-    private final int wallThickness;
-    private final int size;
+public final class MazePresenter {
+    static Grid grid;
+    private static int cellSize;
+    private static int wallThickness;
+    private static int size;
 
-    private final String name;
+    private static String name;
 
-    private final int w;
-    private final int h;
-    private BufferedImage bimage;
+    private static int w;
+    private static int h;
+    private static BufferedImage bimage;
 
-    public MazePresenter(Grid grid) {
-        this(grid, "Maze");
+    private MazePresenter() {}
+
+//    public MazePresenter(Grid grid) {
+//        this(grid, "Maze");
+//    }
+//
+//    public MazePresenter(Grid grid, String name) {
+//        this(grid, name, 20, 2);
+//    }
+//
+//    public MazePresenter(Grid grid, String name, int cellSize, int wallThickness) {
+//        this.grid = Objects.requireNonNull(grid, "grid must not be null");
+//        this.cellSize = cellSize;
+//        this.wallThickness = wallThickness;
+//        this.size = cellSize + wallThickness;
+//
+//        this.name = name;
+//
+//        w = setSize(grid.getWidth());
+//        h = setSize(grid.getHeight());
+//    }
+
+    public static void configImg(Grid grid_) {
+        configImg(grid_,20, 2);
     }
 
-    public MazePresenter(Grid grid, String name) {
-        this(grid, name, 20, 2);
+    public static void configImg(Grid grid_, int cellSize_, int wallThickness_) {
+        configImg(grid_, cellSize_, wallThickness_, "Maze");
     }
 
-    public MazePresenter(Grid grid, String name, int cellSize, int wallThickness) {
-        this.grid = Objects.requireNonNull(grid, "grid must not be null");
-        this.cellSize = cellSize;
-        this.wallThickness = wallThickness;
-        this.size = cellSize + wallThickness;
-
-        this.name = name;
+    public static void configImg(Grid grid_, int cellSize_, int wallThickness_, String name_) {
+        grid = grid_;
+        cellSize = cellSize_;
+        wallThickness = wallThickness_;
+        size = cellSize + wallThickness;
+        name = name_;
 
         w = setSize(grid.getWidth());
         h = setSize(grid.getHeight());
     }
 
-    private int setSize(int size) {
+    private static int setSize(int size) {
         return size * cellSize + (size + 1) * wallThickness;
     }
 
-    private void buildImg() {
+    private static void buildImg() {
         bimage = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
         Graphics2D img = bimage.createGraphics();
 
@@ -98,7 +118,7 @@ public class MazePresenter {
         }
     }
 
-    public void showImage() {
+    public static void showImage() {
         buildImg();
         JFrame f = new JFrame(name);
         RenderPanel p = new RenderPanel(bimage);
@@ -111,7 +131,7 @@ public class MazePresenter {
         f.setVisible(true);
     }
 
-    public void saveImage(String fileName) {
+    public static void saveImage(String fileName) {
         buildImg();
         try {
             ImageIO.write(bimage, "PNG", new File("./" + fileName));
@@ -120,7 +140,7 @@ public class MazePresenter {
         }
     }
 
-    public void printToConsole() {
+    public static void printToConsole() {
         String output = "+" + "----+".repeat(grid.getWidth());
         System.out.println(output);
 
