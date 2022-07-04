@@ -14,10 +14,10 @@ public class Cell {
 
     HashMap<Cell, Boolean> links = new HashMap<>();
 
-    Cell top = null;
-    Cell bottom = null;
-    Cell right = null;
-    Cell left = null;
+    public Cell top = null;
+    public Cell bottom = null;
+    public Cell right = null;
+    public Cell left = null;
 
     /**
      * Constructor method of class Cell.

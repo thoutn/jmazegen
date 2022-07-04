@@ -11,7 +11,7 @@ public class Grid {
     final int width;
     final int height;
 
-    ArrayList<ArrayList<Cell>> cells;
+    public ArrayList<ArrayList<Cell>> cells;
 
     protected final Random rand = new Random();
 
