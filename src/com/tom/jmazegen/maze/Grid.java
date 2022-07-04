@@ -11,7 +11,7 @@ public class Grid {
     final int width;
     final int height;
 
-    public ArrayList<ArrayList<Cell>> cells;
+    ArrayList<ArrayList<Cell>> cells;
 
     protected final Random rand = new Random();
 
@@ -93,5 +93,29 @@ public class Grid {
      */
     public int getSize() {
         return width * height;
+    }
+
+    /**
+     * Getter for maze width.
+     * @return the width of the maze.
+     */
+    public int getWidth() {
+        return width;
+    }
+
+    /**
+     * Getter for maze height.
+     * @return the height of the maze.
+     */
+    public int getHeight() {
+        return height;
+    }
+
+    /**
+     * Getter for matrix storing all the maze cells.
+     * @return the matrix of all cells.
+     */
+    public ArrayList<ArrayList<Cell>> getCells() {
+        return cells;
     }
 }

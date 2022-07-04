@@ -84,4 +84,20 @@ public class Cell {
 
         return lst;
     }
+
+    /**
+     * Getter for cell row.
+     * @return the row of the maze the cell is in.
+     */
+    public int getRow() {
+        return row;
+    }
+
+    /**
+     * Getter for cell column.
+     * @return the column of the maze the cell is in.
+     */
+    public int getColumn() {
+        return column;
+    }
 }

@@ -18,6 +18,11 @@ public class BinaryTreeMazeBuilder extends MazeBuilder {
         this.grid = grid;
     }
 
+    /**
+     * Helper function that randomly chooses a neighbour of the cell.
+     * @param cell the cell, which neighbours are chosen from
+     * @return the selected neighbour or null (if no bottom or right neighbour is available).
+     */
     private Cell chooseNeighbourOf(Cell cell) {
         if (cell.bottom != null) {
             neighbours.add(cell.bottom);
@@ -37,7 +42,7 @@ public class BinaryTreeMazeBuilder extends MazeBuilder {
 
     @Override
     public void buildMaze() {
-        for (ArrayList<Cell> row : grid.cells) {
+        for (ArrayList<Cell> row : grid.getCells()) {
             for (Cell cell : row) {
                 Cell neighbour = chooseNeighbourOf(cell);
 
