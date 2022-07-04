@@ -1,0 +1,28 @@
+# created in command line using:
+# echo "" >.gitignore
+#
+# encoding changed to UTF8, otherwise it does not work
+#
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+out/
+artifacts/
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+
+# Files
+*.png
+*.txt
+!images/*.*
