@@ -17,6 +17,14 @@ public class Grid {
 
     /**
      * Constructor method of class Grid.
+     * @param dim dimension of the maze. Final maze size is <em>dim</em>×<em>dim</em>.
+     */
+    public Grid(int dim) {
+        this(dim, dim);
+    }
+
+    /**
+     * Constructor method of class Grid.
      * @param width width of the maze
      * @param height height of the maze
      */

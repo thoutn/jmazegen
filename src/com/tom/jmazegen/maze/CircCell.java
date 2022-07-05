@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * Modified Cell class for usage in the CircGrid (mazes represented in polar coordinates).
  */
 public class CircCell extends Cell {
-    ArrayList<Cell> bottom = new ArrayList<>();
+    public ArrayList<Cell> bottom = new ArrayList<>();
 
     /**
      * Constructor method calling super().

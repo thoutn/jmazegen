@@ -1,21 +1,23 @@
 package com.tom.jmazegen.algos;
 
 import com.tom.jmazegen.maze.Cell;
+import com.tom.jmazegen.maze.CircCell;
+import com.tom.jmazegen.maze.CircGrid;
 import com.tom.jmazegen.maze.Grid;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
-public final class BinaryTreeMazeBuilder {
+public final class BinaryTree {
     static Grid grid;
     private static final ArrayList<Cell> neighbours = new ArrayList<>();
+    private static final ArrayList<Cell> neigh_ = new ArrayList<>();
     private static final Random rand = new Random();
 
     /**
      * Don't let anyone instantiate this class.
      */
-    private BinaryTreeMazeBuilder() {}
+    private BinaryTree() {}
 
     /**
      * Helper function that randomly chooses a neighbour of the cell.
@@ -23,8 +25,11 @@ public final class BinaryTreeMazeBuilder {
      * @return the selected neighbour or null (if no bottom or right neighbour is available).
      */
     private static Cell chooseNeighbourOf(Cell cell) {
-        if (cell.bottom != null) {
-            neighbours.addAll(Arrays.asList(cell.bottom));
+        if (grid instanceof CircGrid) {
+            CircCell c_ = (CircCell) cell;
+            neighbours.addAll(c_.bottom);
+        } else if (cell.bottom != null) {
+            neighbours.add(cell.bottom);
         }
         if (cell.right != null) {
             neighbours.add(cell.right);
